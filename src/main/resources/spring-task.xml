@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/task
+       http://www.springframework.org/schema/task/spring-task.xsd">
+
+    <!-- 每天检测建表信息(23:30 0秒执行) -->
+    <bean id="createMonthTableTask" class="com.diyiliu.task.impl.CreateMonthTableTask"/>
+
+    <task:scheduled-tasks>
+        <task:scheduled ref="createMonthTableTask" method="execute" cron="0 44 15 * * ?"/>
+    </task:scheduled-tasks>
+</beans>

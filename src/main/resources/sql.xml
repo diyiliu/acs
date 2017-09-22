@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <sql id="alyMileage"  name="ALY_MILEAGE" description="里程分析月表" type="table">
+        <![CDATA[
+            create table ALY_MILEAGE?
+            (
+              vehicleid  NUMBER(8) not null,
+              day        DATE not null,
+              odo        NUMBER(8,1) not null,
+              daymileage NUMBER(5,1) not null
+            )
+            tablespace TSTARDATA
+              pctfree 10
+              initrans 1
+              maxtrans 255
+              storage
+              (
+                initial 64K
+                next 1M
+                minextents 1
+                maxextents unlimited
+              )
+        ]]>
+    </sql>
+
+    <sql id="alyMileageIndex"  name="PK_ALY_MILEAGE" description="里程分析月表索引" type="index" table="ALY_MILEAGE">
+        <![CDATA[
+            alter table ALY_MILEAGE?
+              add constraint PK_ALY_MILEAGE? primary key (VEHICLEID, DAY)
+              using index
+              tablespace TSTARDATA
+              pctfree 10
+              initrans 2
+              maxtrans 255
+              storage
+              (
+                initial 64K
+                next 1M
+                minextents 1
+                maxextents unlimited
+              )
+        ]]>
+    </sql>
+</root>
